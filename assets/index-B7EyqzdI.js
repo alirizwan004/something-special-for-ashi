@@ -14246,14 +14246,17 @@ function ae() {
                       children: `For the moments when one song can say more than a whole page of words.`,
                     }),
                     (0, x.jsx)(`div`, {
-                      className: `song-video-shell song-spotify-shell`,
-                      children: (0, x.jsx)(`iframe`, {
-                        className: `song-spotify-player`,
-                        src: `https://open.spotify.com/embed/track/7zku2rvsa345C0kwQ4OEyZ?utm_source=generator&theme=0`,
-                        title: `Pretty by JVKE — Spotify player`,
-                        loading: `lazy`,
-                        allow: `autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture`,
-                        allowFullScreen: !0,
+                      className: `song-video-shell`,
+                      children: (0, x.jsx)(`video`, {
+                        className: `song-video`,
+                        controls: !0,
+                        playsInline: !0,
+                        preload: `metadata`,
+                        "aria-label": `A video message from Ali for Ashi`,
+                        children: (0, x.jsx)(`source`, {
+                          src: `./assets/1000178081.mp4`,
+                          type: `video/mp4`,
+                        }),
                       }),
                     }),
                     (0, x.jsx)(`small`, {

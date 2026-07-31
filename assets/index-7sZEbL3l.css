@@ -4418,19 +4418,6 @@ button {
       #341428 19px 28px
     );
 }
-.song-spotify-shell {
-  aspect-ratio: auto;
-  height: 352px;
-  background: #2b1023;
-  border-color: #edbfd2;
-}
-.song-spotify-player {
-  border: 0;
-  border-radius: 19px;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
 .song-external-link {
   text-decoration: none;
 }
