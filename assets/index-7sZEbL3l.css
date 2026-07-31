@@ -4434,6 +4434,8 @@ button {
   z-index: 2;
   color: #fff;
   cursor: pointer;
+  font: inherit;
+  touch-action: manipulation;
   background: linear-gradient(#31112617 0%, #32112770 58%, #210a1be8 100%);
   border: 0;
   flex-direction: column;
@@ -4441,13 +4443,23 @@ button {
   align-items: center;
   gap: 15px;
   padding: 24px;
-  transition: background 0.25s;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.38s ease,
+    transform 0.45s ease,
+    background 0.25s;
   display: flex;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+}
+.song-play-cover.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.025);
 }
 .song-play-cover:after {
   content: "";

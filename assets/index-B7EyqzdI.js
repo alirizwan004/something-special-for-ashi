@@ -12941,7 +12941,9 @@ function ae() {
     [_e, ve] = (0, b.useState)(!1),
     [ye, be] = (0, b.useState)(!1),
     [xe, Se] = (0, b.useState)(!1),
+    [songStarted, setSongStarted] = (0, b.useState)(!1),
     [Ce, we] = (0, b.useState)([]),
+    SongVideoRef = (0, b.useRef)(null),
     Te = (0, b.useRef)(null);
   (0, b.useEffect)(() => {
     if (!e) return;
@@ -14245,19 +14247,60 @@ function ae() {
                     (0, x.jsx)(`p`, {
                       children: `For the moments when one song can say more than a whole page of words.`,
                     }),
-                    (0, x.jsx)(`div`, {
+                    (0, x.jsxs)(`div`, {
                       className: `song-video-shell`,
-                      children: (0, x.jsx)(`video`, {
-                        className: `song-video`,
-                        controls: !0,
-                        playsInline: !0,
-                        preload: `metadata`,
-                        "aria-label": `A video message from Ali for Ashi`,
-                        children: (0, x.jsx)(`source`, {
-                          src: `./assets/1000178081.mp4`,
-                          type: `video/mp4`,
+                      children: [
+                        (0, x.jsx)(`video`, {
+                          ref: SongVideoRef,
+                          className: `song-video`,
+                          controls: songStarted,
+                          playsInline: !0,
+                          preload: `metadata`,
+                          "aria-label": `A video message from Ali for Ashi`,
+                          onPlay: () => setSongStarted(!0),
+                          onEnded: () => {
+                            setSongStarted(!1),
+                            SongVideoRef.current &&
+                              (SongVideoRef.current.currentTime = 0);
+                          },
+                          children: (0, x.jsx)(`source`, {
+                            src: `./assets/1000178081.mp4`,
+                            type: `video/mp4`,
+                          }),
                         }),
-                      }),
+                        (0, x.jsxs)(`button`, {
+                          type: `button`,
+                          className: `song-play-cover ${songStarted ? `is-hidden` : ``}`,
+                          "aria-label": `Play Ali's little message for Ashi`,
+                          "aria-hidden": songStarted,
+                          tabIndex: songStarted ? -1 : 0,
+                          onClick: () => {
+                            let e = SongVideoRef.current;
+                            e &&
+                              ((e.currentTime = 0),
+                              setSongStarted(!0),
+                              e.play().catch(() => setSongStarted(!1)));
+                          },
+                          children: [
+                            (0, x.jsx)(`span`, {
+                              className: `song-play-orb`,
+                              "aria-hidden": `true`,
+                              children: (0, x.jsx)(`i`, { children: `▶` }),
+                            }),
+                            (0, x.jsxs)(`span`, {
+                              className: `song-play-copy`,
+                              children: [
+                                `Tap to play `,
+                                (0, x.jsx)(`b`, {
+                                  children: `Ali’s little message for you`,
+                                }),
+                                ` `,
+                                (0, x.jsx)(`i`, { children: `♡` }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      ],
                     }),
                     (0, x.jsx)(`small`, {
                       children: `a little moment, chosen especially for you`,
